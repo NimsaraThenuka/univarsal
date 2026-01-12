@@ -1,6 +1,6 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import logo from "figma:asset/18a195bebafd93494868e3a8dbf4861c5e444952.png";
+//import logo from "figma:asset/18a195bebafd93494868e3a8dbf4861c5e444952.png";
 
 interface NavigationProps {
   currentPage: string;
@@ -28,7 +28,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
               className="flex items-center gap-3 group"
             >
               <img
-                src={logo}
+                //src={logo}
                 alt="Universal Sourcing"
                 className="h-12 w-auto transition-transform group-hover:scale-105"
               />
