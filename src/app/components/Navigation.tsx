@@ -1,6 +1,5 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-//import logo from "figma:asset/18a195bebafd93494868e3a8dbf4861c5e444952.png";
 
 interface NavigationProps {
   currentPage: string;
@@ -20,26 +19,28 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
   return (
     <nav className="bg-white border-b border-border sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-24">
           {/* Logo */}
           <div className="flex-shrink-0">
             <button
               onClick={() => onNavigate("home")}
-              className="flex items-center gap-3 group"
+              className="flex items-center gap-4 group"
             >
               <img
-                //src={logo}
+                src="https://res.cloudinary.com/dyp247eoh/image/upload/v1768969840/universal_logo_xhzgu0.jpg"
                 alt="Universal Sourcing"
-                className="h-12 w-auto transition-transform group-hover:scale-105"
+                className="h-16 w-auto transition-transform group-hover:scale-105"
               />
               <div className="hidden lg:block">
-                <div className="text-xs text-muted-foreground">Universal Sourcing</div>
+                <div className="text-xl font-semibold text-muted-foreground">
+                  Universal Sourcing
+                </div>
               </div>
             </button>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-1">
+          <div className="hidden md:flex space-x-3">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -47,7 +48,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                   onNavigate(item.id);
                   setMobileMenuOpen(false);
                 }}
-                className={`px-5 py-2.5 rounded-lg transition-all ${
+                className={`px-5 py-2.5 rounded-lg text-base font-medium transition-all ${
                   currentPage === item.id
                     ? "bg-primary text-white"
                     : "text-foreground hover:bg-secondary"
@@ -85,7 +86,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                   onNavigate(item.id);
                   setMobileMenuOpen(false);
                 }}
-                className={`block w-full text-left px-4 py-3 rounded-lg transition-all ${
+                className={`block w-full text-left px-4 py-3 rounded-lg text-base font-medium transition-all ${
                   currentPage === item.id
                     ? "bg-primary text-white"
                     : "text-foreground hover:bg-secondary"
