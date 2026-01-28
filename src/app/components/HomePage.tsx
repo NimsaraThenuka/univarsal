@@ -30,7 +30,7 @@ export function HomePage() {
       subtitle: "Authentic flavors from Ceylon"
     },
     {
-      url: "https://images.unsplash.com/photo-1734773557735-8fc50f94b473?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmcmVzaCUyMGZydWl0JTIwanVpY2UlMjBib3R0bGVzfGVufDF8fHx8MTc2ODE5MjA3MHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      url: "https://res.cloudinary.com/dyp247eoh/image/upload/v1769135873/assortment-fruit-juices.jpg_ty7psd.jpg",
       title: "Fresh Fruit Juices & Concentrates",
       subtitle: "Pure natural goodness in every bottle"
     },

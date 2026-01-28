@@ -28,9 +28,9 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
               className="flex items-center gap-3 group"
             >
               <img
-                src="https://res.cloudinary.com/dyp247eoh/image/upload/v1768969840/universal_logo_xhzgu0.jpg"
+                //src={logo}
                 alt="Universal Sourcing"
-                className="h-auto w-auto max-h-16 transition-transform group-hover:scale-105"
+                className="h-12 w-auto transition-transform group-hover:scale-105"
               />
               <div className="hidden lg:block">
                 <div className="text-xs text-muted-foreground">Universal Sourcing</div>

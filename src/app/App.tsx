@@ -3,12 +3,14 @@ import { Navigation } from "./components/Navigation";
 import { HomePage } from "./components/HomePage";
 import { AboutPage } from "./components/AboutPage";
 import { ProductsPage } from "./components/ProductsPage";
+import { ProductDetailPage } from "./components/ProductDetailPage";
 import { ContactPage } from "./components/ContactPage";
 import { Footer } from "./components/Footer";
 import { ArrowUp } from "lucide-react";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
+  const [currentProduct, setCurrentProduct] = useState<string | null>(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   // Handle scroll to top button visibility
@@ -22,8 +24,13 @@ export default function App() {
   }, []);
 
   // Scroll to top when changing pages
-  const handleNavigate = (page: string) => {
+  const handleNavigate = (page: string, productId?: string) => {
     setCurrentPage(page);
+    if (productId) {
+      setCurrentProduct(productId);
+    } else {
+      setCurrentProduct(null);
+    }
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -38,7 +45,10 @@ export default function App() {
       <main>
         {currentPage === "home" && <HomePage />}
         {currentPage === "about" && <AboutPage />}
-        {currentPage === "products" && <ProductsPage />}
+        {currentPage === "products" && !currentProduct && <ProductsPage onNavigate={handleNavigate} />}
+        {currentPage === "product-detail" && currentProduct && (
+          <ProductDetailPage productId={currentProduct} onNavigate={handleNavigate} />
+        )}
         {currentPage === "contact" && <ContactPage />}
       </main>
 

@@ -15,21 +15,40 @@ import {
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useState } from "react";
 
-export function ProductsPage() {
+interface ProductsPageProps {
+  onNavigate: (page: string, productId?: string) => void;
+}
+
+export function ProductsPage({ onNavigate }: ProductsPageProps) {
   const [activeCategory, setActiveCategory] = useState<"food" | "machinery">("food");
+
+  // Product ID mapping for navigation
+  const productIdMap: Record<string, string> = {
+    "Fruit Juices and Concentrates": "fruit-juices-and-concentrates",
+    "Ready-to-Drink (RTD) Products": "ready-to-drink-products",
+    "Ready-to-Eat Food Products": "ready-to-eat-food-products",
+    "Spices and Spice Blends": "spices-and-spice-blends",
+    "Food Ingredients": "food-ingredients",
+    "Herbal and Natural Ingredients": "herbal-and-natural-ingredients",
+    "Food Processing Machinery": "food-processing-machinery",
+    "Packaging Machinery": "packaging-machinery",
+    "Flexible & Rigid Packaging Materials": "flexible-rigid-packaging-materials",
+    "Industrial Packaging Solutions": "industrial-packaging-solutions",
+    "Spare Parts and Accessories": "spare-parts-and-accessories"
+  };
 
   const foodProducts = [
     {
       icon: Droplet,
       title: "Fruit Juices and Concentrates",
       description: "Premium quality fruit juices and concentrates made from the finest ingredients",
-      image: "https://images.unsplash.com/photo-1694886712783-5eefee63cedc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmcnVpdCUyMGp1aWNlJTIwYm90dGxlc3xlbnwxfHx8fDE3NjgxMzgyOTJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      image: "https://res.cloudinary.com/dyp247eoh/image/upload/v1769135873/assortment-fruit-juices.jpg_ty7psd.jpg",
     },
     {
       icon: Package,
       title: "Ready-to-Drink (RTD) Products",
       description: "Convenient, high-quality beverages ready for immediate consumption",
-      image: "https://images.unsplash.com/photo-1694886712783-5eefee63cedc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmcnVpdCUyMGp1aWNlJTIwYm90dGxlc3xlbnwxfHx8fDE3NjgxMzgyOTJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      image: "https://res.cloudinary.com/dyp247eoh/image/upload/v1769135623/immunity-boosting-food-healthy-lifestyle-with-citrus.jpg_sb9kdu.jpg",
     },
     {
       icon: Apple,
@@ -154,9 +173,10 @@ export function ProductsPage() {
               {foodProducts.map((product, index) => {
                 const Icon = product.icon;
                 return (
-                  <div
+                  <button
                     key={index}
-                    className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group"
+                    onClick={() => onNavigate("product-detail", productIdMap[product.title])}
+                    className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group text-left w-full"
                   >
                     <div className="relative h-48 overflow-hidden">
                       <ImageWithFallback
@@ -172,10 +192,10 @@ export function ProductsPage() {
                       </div>
                     </div>
                     <div className="p-6">
-                      <h3 className="mb-3">{product.title}</h3>
+                      <h3 className="mb-3 group-hover:text-primary transition-colors">{product.title}</h3>
                       <p className="text-muted-foreground">{product.description}</p>
                     </div>
-                  </div>
+                  </button>
                 );
               })}
             </div>
@@ -253,9 +273,10 @@ export function ProductsPage() {
               {machineryProducts.map((product, index) => {
                 const Icon = product.icon;
                 return (
-                  <div
+                  <button
                     key={index}
-                    className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group"
+                    onClick={() => onNavigate("product-detail", productIdMap[product.title])}
+                    className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group text-left w-full"
                   >
                     <div className="relative h-48 overflow-hidden">
                       <ImageWithFallback
@@ -271,10 +292,10 @@ export function ProductsPage() {
                       </div>
                     </div>
                     <div className="p-6">
-                      <h3 className="mb-3">{product.title}</h3>
+                      <h3 className="mb-3 group-hover:text-primary transition-colors">{product.title}</h3>
                       <p className="text-muted-foreground">{product.description}</p>
                     </div>
-                  </div>
+                  </button>
                 );
               })}
             </div>
